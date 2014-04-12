@@ -25,9 +25,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<PartnerCo
 		btLogin.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				// ユーザIDの取得
 				EditText etUsername = (EditText)findViewById(R.id.et_username);
 				String username = etUsername.getText().toString();
 				
+				// パスワードの取得
 				EditText etPassword = (EditText)findViewById(R.id.et_password);
 				String password = etPassword.getText().toString();
 				
@@ -35,6 +37,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<PartnerCo
 				args.putString("USER_NAME", username);
 				args.putString("PASSWORD", password);
 				
+				// ログイン処理を非同期で行うためLoaderを開始
 				getLoaderManager().restartLoader(0, args, LoginActivity.this);
 			}
 		});
@@ -42,7 +45,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<PartnerCo
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.login, menu);
 		return true;
 	}

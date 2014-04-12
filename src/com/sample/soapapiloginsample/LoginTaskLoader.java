@@ -28,6 +28,7 @@ public class LoginTaskLoader extends AsyncTaskLoader<PartnerConnection> {
 		config.setPassword(password);
 		
 		try {
+			// PartnerConnectionのインスタンス生成時にログインが実行される
 			connection = Connector.newConnection(config);
 		} catch (ConnectionException e) {
 			e.printStackTrace();
